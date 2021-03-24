@@ -1,0 +1,48 @@
+﻿@model Web.Views.ViewModels.PortfolioItemViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1 class="text-info card bg-light p-3" style="margin-top:100px">Edit Portfolio</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                @Html.HiddenFor(x => x.Id)
+                @Html.HiddenFor(x => x.ImageUrl)
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ProjectName" class="control-label"></label>
+                    <input asp-for="ProjectName" class="form-control" />
+                    <span asp-validation-for="ProjectName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageUrl" class="control-label"></label>
+                    <input type="file" asp-for="File" class="form-control" />
+                    <img src="~/img/portfolio/@Model.ImageUrl" style="width:90px;height:90px" class="img-thumbnail mt-4" alt="Alternate Text" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LinkUrl" class="control-label"></label>
+                    <input asp-for="LinkUrl" class="form-control" />
+                    <span asp-validation-for="LinkUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Edit Portfolio" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+    </div>
+</div>
+
+
+
+
