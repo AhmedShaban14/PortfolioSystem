@@ -43,7 +43,8 @@ namespace Web
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseRouting();
             app.UseStaticFiles();
             app.UseEndpoints(endpoints =>

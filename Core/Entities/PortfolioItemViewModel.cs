@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,16 +9,14 @@ using System.Threading.Tasks;
 
 namespace Web.Views.ViewModels
 {
-    public class PortfolioItemViewModel
+    public class PortfolioItemViewModel : EntityBase
     {
-        public Guid Id { get; set; }
         [Required]
         [Display(Name = "Project Name")]
         public string ProjectName { get; set; }
         [Required]
         public string Description { get; set; }
 
-        [Required]
         [Display(Name = "Image Of Project")]
         public string ImageUrl { get; set; }
 

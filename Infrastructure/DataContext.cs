@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Web.Views.ViewModels;
 
 namespace Infrastructure
 {
@@ -19,6 +20,7 @@ namespace Infrastructure
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Owner>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             modelBuilder.Entity<PortfolioItem>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
+            modelBuilder.Entity<PortfolioItemViewModel>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
 
             modelBuilder.Entity<Owner>().HasData(
                 new Owner()

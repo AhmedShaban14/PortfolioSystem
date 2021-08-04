@@ -15,7 +15,7 @@ namespace Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.11")
+                .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -67,7 +67,7 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("80186256-7b18-498d-ab79-10239b7e6ec9"),
+                            Id = new Guid("d3d9da33-54ea-4ffb-862e-147a324e6959"),
                             Avatar = "avatar.jpg",
                             FullName = "Hamada",
                             Profile = "new Motion Graphicer"

@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210212135654_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210804191137_AddNews")]
+    partial class AddNews
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.5")
+                .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -69,7 +69,7 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e538d0e9-1d07-4e0e-89dd-0e1b38089495"),
+                            Id = new Guid("d3d9da33-54ea-4ffb-862e-147a324e6959"),
                             Avatar = "avatar.jpg",
                             FullName = "Hamada",
                             Profile = "new Motion Graphicer"
@@ -87,6 +87,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProjectName")

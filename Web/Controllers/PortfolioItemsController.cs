@@ -36,27 +36,36 @@ namespace Web.Controllers
         [HttpPost]
         public IActionResult Create(PortfolioItemViewModel vm)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(vm);
+                string fileName = "";
+                if(vm.File != null)
+                {
+                    fileName = Guid.NewGuid() + vm.File.FileName;
+                    string uploads = Path.Combine(hostingEnvironment.WebRootPath, @"img\portfolio");
+                    string fullPath = Path.Combine(uploads, fileName);
+                    var sr = new FileStream(fullPath, FileMode.Create);
+                    vm.File.CopyTo(sr);
+                }
+
+                PortfolioItem portfolioItem = new PortfolioItem
+                {
+                    Id = vm.Id,
+                    Description = vm.Description,
+                    ProjectName = vm.ProjectName,
+                    ImageUrl = fileName
+                };
+                unitOfWork.PortfolioItems.Create(portfolioItem);
+                unitOfWork.SaveChanges();
+                return RedirectToAction(nameof(Index));
 
             }
-            string uploads = Path.Combine(hostingEnvironment.WebRootPath, @"img\portfolio");
-            string fullPath = Path.Combine(uploads, vm.File.FileName);
-            var sr = new FileStream(fullPath, FileMode.Create);
-            vm.File.CopyTo(sr);
-
-            PortfolioItem portfolioItem = new PortfolioItem
+            else
             {
-                Id = vm.Id,
-                Description = vm.Description,
-                ProjectName = vm.ProjectName,
-                ImageUrl = vm.File.FileName
-            };
-            unitOfWork.PortfolioItems.Create(portfolioItem);
-            unitOfWork.SaveChanges();
-            return RedirectToAction(nameof(Index));
-        }
+                return View(vm);
+            }
+
+       }
         [HttpGet]
         public IActionResult Edit(Guid id)
         {

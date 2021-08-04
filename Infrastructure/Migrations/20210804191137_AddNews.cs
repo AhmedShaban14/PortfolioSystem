@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class AddNews : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,8 @@ namespace Infrastructure.Migrations
                     Id = table.Column<Guid>(nullable: false, defaultValueSql: "NEWID()"),
                     ProjectName = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    ImageUrl = table.Column<string>(nullable: true)
+                    ImageUrl = table.Column<string>(nullable: true),
+                    LinkUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,7 +60,7 @@ namespace Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Owners",
                 columns: new[] { "Id", "AddressId", "Avatar", "FullName", "Profile" },
-                values: new object[] { new Guid("e538d0e9-1d07-4e0e-89dd-0e1b38089495"), null, "avatar.jpg", "Hamada", "new Motion Graphicer" });
+                values: new object[] { new Guid("d3d9da33-54ea-4ffb-862e-147a324e6959"), null, "avatar.jpg", "Hamada", "new Motion Graphicer" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Owners_AddressId",
